@@ -24,11 +24,26 @@ class BaseModel:
     - to_dict: Returns a dictionary representation of the object's attributes
         in a specified format.
     """
-    def __init__(self):
-        """Initialize a new instance of the BaseModel class."""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+
+    def __init__(self, *args, **kwargs):
+        """Initialize a new instance of the BaseModel class.
+
+        Args:
+            *args: Unused variable-length positional arguments.
+            **kwargs: Variable-length keyword arguments
+                representing object attributes.
+        """
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    date_format = "%Y-%m-%dT%H:%M:%S.%f"
+                    setattr(self, key, datetime.strptime(value, date_format))
+                elif key != "__class__":
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         """Return a string representation of the BaseModel instance."""
