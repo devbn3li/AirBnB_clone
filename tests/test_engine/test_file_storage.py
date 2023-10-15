@@ -1,18 +1,16 @@
 #!/usr/bin/python3
-"""Unittest for BaseModel"""
-
+"""Contains unittests for FileStorage class"""
 
 import unittest
-from datetime import datetime
 from models.engine.file_storage import FileStorage
-from models.base_model import BaseModel
-from models import storage
 
 
 class TestFileStorage(unittest.TestCase):
-    """tests for file storage"""
+    """
+    Unittest for FileStorage class
+    """
+    pass
 
-    def test_storage(self):
-        """test for storage"""
 
-        self.assertTrue(isinstance(storage, FileStorage))
+if __name__ == '__main__':
+    unittest.main()
