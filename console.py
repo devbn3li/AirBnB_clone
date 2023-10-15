@@ -5,7 +5,6 @@ command interpreter using cmd module
 
 
 import cmd
-import sys
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.review import Review
@@ -24,7 +23,12 @@ class HBNBCommand(cmd.Cmd):
                'Review']
 
     def do_quit(self, line):
-        """Quit command to exit the program"""
+        """Quit to exit the program"""
+
+        return True
+
+    def do_EOF(self, line):
+        """EOF to exit the program"""
 
         print()
         return True
