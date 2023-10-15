@@ -24,3 +24,7 @@ class Test_Place(unittest.TestCase):
         self.assertEqual(my_place.latitude, 0.0)
         self.assertEqual(my_place.longitude, 0.0)
         self.assertEqual(my_place.amenity_ids, [])
+
+
+if __name__ == '__main__':
+    unittest.main()
