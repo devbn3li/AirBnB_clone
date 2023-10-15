@@ -19,3 +19,7 @@ class TestBaseModel(unittest.TestCase):
         object.my_number = 89
         self.assertEqual(object.name, "ALX model")
         self.assertEqual(object.my_number, 89)
+
+
+if __name__ == '__main__':
+    unittest.main()
