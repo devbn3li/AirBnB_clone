@@ -16,6 +16,6 @@ class Test_City(unittest.TestCase):
         """
 
         my_city = City()
-        
+
         self.assertEqual(my_city.name, '')
         self.assertEqual(my_city.state_id, '')

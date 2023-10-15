@@ -5,7 +5,7 @@ import unittest
 from models.place import Place
 
 
-class TestPlace(unittest.TestCase):
+class Test_Place(unittest.TestCase):
     """unittest_Place"""
 
     def test_attributes(self):

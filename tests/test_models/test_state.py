@@ -16,5 +16,5 @@ class Test_State(unittest.TestCase):
         """
 
         my_state = State()
-        
+
         self.assertTrue(my_state.name, '')
