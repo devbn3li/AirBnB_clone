@@ -53,6 +53,58 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class name missing **")
 
+    def do_show(self, line):
+        """Prints the string representation of \
+            an instance based on the class name and id"""
+
+        if line:
+            ls_line = line.split(" ")
+            if ls_line[0] not in HBNBCommand.list_of_classes:
+                print("** class doesn't exist **")
+            elif len(ls_line) == 1:
+                print("** instance id missing **")
+            elif ls_line[1]:
+                dic = storage.all()
+                flagg = 0
+                for key, value in dic.items():
+                    if f"{ls_line[0]}.{ls_line[1]}" == key:
+                        print(value)
+                        flagg = 1
+                        break
+                if flagg == 0:
+                    print("** no instance found **")
+        else:
+            print("** class name missing **")
+
+    def do_destroy(self, line):
+        """
+        Deletes an instance based on the class name and id
+        (save the change into the JSON file).
+        """
+        kwargs = HBNBCommand.__parse(line)
+
+        if not kwargs:
+            return
+
+        if not kwargs['cls_name']:
+            print("** class name missing **")
+            return
+
+        if kwargs['cls_name'] not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+
+        if not kwargs['id']:
+            print("** instance id missing **")
+            return
+
+        try:
+            del storage.all()[f"{kwargs['cls_name']}.{kwargs['id']}"]
+            storage.save()
+        except KeyError:
+            print("** no instance found **")
+            return
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
