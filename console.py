@@ -149,10 +149,10 @@ class HBNBCommand(cmd.Cmd):
             return
 
         try:
-            obj = storage.all()[f"{kwargs['cls_name']}.{kwargs['id']}"]
+            object = storage.all()[f"{kwargs['cls_name']}.{kwargs['id']}"]
 
-            setattr(obj, kwargs['attr_name'], kwargs['attr_value'])
-            obj.save()
+            setattr(object, kwargs['attr_name'], kwargs['attr_value'])
+            object.save()
         except KeyError:
             print("** no instance found **")
             return
