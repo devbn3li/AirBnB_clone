@@ -11,7 +11,7 @@ class TestBaseModel(unittest.TestCase):
     """unittest_BaseModel"""
 
     def test_types(self):
-        """test for types"""
+        """tests for types"""
 
         objects = BaseModel()
         objects.name = "My First Model"
@@ -30,16 +30,16 @@ class TestBaseModel(unittest.TestCase):
 
         obj_json = objects.to_dict()
 
-        self.assertEqual(obj_json['name'], "My First Model")
-        self.assertEqual(obj_json['my_number'], 89)
-        self.assertIsInstance(obj_json['id'], str)
-        self.assertIsInstance(obj_json['updated_at'], str)
-        self.assertIsInstance(obj_json['created_at'], str)
         self.assertIsInstance(obj_json['name'], str)
         self.assertIsInstance(obj_json['__class__'], str)
         self.assertEqual(obj_json['__class__'], 'BaseModel')
         self.assertIsInstance(obj_json['my_number'], int)
         self.assertIsInstance(obj_json, dict)
+        self.assertEqual(obj_json['name'], "My First Model")
+        self.assertEqual(obj_json['my_number'], 89)
+        self.assertIsInstance(obj_json['id'], str)
+        self.assertIsInstance(obj_json['updated_at'], str)
+        self.assertIsInstance(obj_json['created_at'], str)
         self.assertEqual
         (obj_json['updated_at'], datetime.isoformat(objects.updated_at))
         self.assertEqual
@@ -54,9 +54,9 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertNotEqual(objects.updated_at, objects.created_at)
 
-        obj2 = BaseModel()
-        self.assertNotEqual(objects.id, obj2.id)
-        self.assertNotEqual(objects, obj2)
+        objects2 = BaseModel()
+        self.assertNotEqual(objects.id, objects2.id)
+        self.assertNotEqual(objects, objects2)
 
 
 if __name__ == '__main__':
