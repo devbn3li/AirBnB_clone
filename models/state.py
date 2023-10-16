@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module to get BaseModel"""
+"""Module to get BaseModel"""
 
 from models.base_model import BaseModel
 
