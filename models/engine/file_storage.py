@@ -3,6 +3,22 @@
 """
 from json import dump, load
 from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+
+__all__ = [
+    'BaseModel',
+    'User',
+    'Place',
+    'State',
+    'City',
+    'Amenity',
+    'Review'
+]
 
 
 class FileStorage:
@@ -45,12 +61,10 @@ class FileStorage:
         If the JSON file does not exist, no exception is raised.
         """
         try:
-            with open(self.__file_path, 'r', encoding='utf-8') as file:
-                data = load(file)
-            for key, value in data.items():
-                class_name, obj_id = key.split('.')
-                obj_data = value
-                obj_instance = BaseModel(**obj_data)
-                self.new(obj_instance)
+            with open(FileStorage.__file_path) as file:
+                FileStorage.__objects = {
+                    k: eval(f"{v['__class__']}(**{v})")
+                    for k, v in load(file).items()
+                }
         except FileNotFoundError:
             pass
