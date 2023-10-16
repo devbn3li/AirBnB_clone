@@ -15,9 +15,9 @@ class Test_State(unittest.TestCase):
         Test the attributes of the State class
         """
 
-        my_state = State()
+        my_state = State('ALX')
 
-        self.assertTrue(my_state.name, '')
+        self.assertTrue(my_state.name, 'ALX')
 
 
 if __name__ == '__main__':
