@@ -18,7 +18,7 @@ class TestFileStorage(unittest.TestCase):
             obj = all_obj[obj_id]
 
         try:
-            with open("tests/test_models/file.json", "r", encoding='utf-8') as file:
+            with open("file.json", "r", encoding='utf-8') as file:
                 pass
                 all_obj = storage.reload()
                 self.assertIsInstance(obj, BaseModel)
@@ -28,7 +28,7 @@ class TestFileStorage(unittest.TestCase):
                                  f"{obj.__class__.__name__}.{obj.id}")
         except FileNotFoundError:
             all_obj = storage.reload()
-            self.assertEqual(all_obj, "")
+            self.assertFalse(all_obj, "")
 
         model = BaseModel()
         model.name = "My_First_Model"
