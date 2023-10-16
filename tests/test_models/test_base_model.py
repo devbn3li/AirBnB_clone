@@ -15,9 +15,9 @@ class TestBaseModel(unittest.TestCase):
         """test type"""
 
         object = BaseModel()
-        object.name = "ALX model"
+        object.name = "My First Model"
         object.my_number = 89
-        self.assertEqual(object.name, "ALX model")
+        self.assertEqual(object.name, "My First Model")
         self.assertEqual(object.my_number, 89)
 
 
