@@ -18,7 +18,7 @@ class TestFileStorage(unittest.TestCase):
             obj = all_obj[obj_id]
 
         try:
-            with open("file.json", "r", encoding='utf-8') as file:
+            with open("tests/test_models/file.json", "r", encoding='utf-8') as file:
                 pass
                 all_obj = storage.reload()
                 self.assertIsInstance(obj, BaseModel)
