@@ -3,10 +3,8 @@
 
 
 import unittest
-from datetime import datetime
+import unittest
 
-from models.engine.file_storage import FileStorage
-from models.base_model import BaseModel
 from models import storage
 
 
@@ -22,7 +20,7 @@ class TestFileStorage(unittest.TestCase):
 
         try:
             with open("file.json", "r", encoding='utf-8') as file:
-                f = file.read()
+                pass
                 all_obj = storage.reload()
                 self.assertIsInstance(all_obj, dict)
                 self.assertIsInstance(obj, BaseModel)
