@@ -61,8 +61,8 @@ class FileStorage:
         If the JSON file does not exist, no exception is raised.
         """
         try:
-            with open(FileStorage.__file_path) as file:
-                FileStorage.__objects = {
+            with open(self.__file_path) as file:
+                self.__objects = {
                     k: eval(f"{v['__class__']}(**{v})")
                     for k, v in load(file).items()
                 }
