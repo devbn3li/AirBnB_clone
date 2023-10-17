@@ -4,36 +4,51 @@
 
 import unittest
 from models.base_model import BaseModel
-from models import storage
+from models.engine.file_storage import FileStorage
 
 
 class TestFileStorage(unittest.TestCase):
-    """unittest_BaseModel"""
+    """unittest for FileStorage class"""
 
-    def test_storage(self):
-        """test for storage"""
+    def setUp(self):
+        """Set up test environment"""
+        self.storage = FileStorage()
 
-        all_obj = storage.all()
-        for obj_id in all_obj.keys():
-            obj = all_obj[obj_id]
+    def tearDown(self):
+        """Tear down test environment"""
+        del self.storage
 
-        try:
-            with open("file.json", "r", encoding='utf-8') as file:
-                pass
-                all_obj = storage.reload()
-                self.assertIsInstance(obj, BaseModel)
-                val = f"[{obj.__class__.__name__}] ({obj.id}) {obj.__dict__}"
-                self.assertEqual(str(obj), val)
-                self.assertEqual(f"{obj_id}",
-                                 f"{obj.__class__.__name__}.{obj.id}")
-        except FileNotFoundError:
-            all_obj = storage.reload()
-            self.assertFalse(all_obj, "")
+    def test_all(self):
+        """Test all method"""
+
+        self.assertIsInstance(self.storage.all(), dict)
+
+    def test_new(self):
+        """Test new method"""
 
         model = BaseModel()
-        model.name = "My_First_Model"
-        model.my_number = 89
-        model.save()
+        self.storage.new(model)
+        key = "{}.{}".format(model.__class__.__name__, model.id)
+        self.assertIn(key, self.storage.all())
+
+    def test_save(self):
+        """Test save method"""
+
+        model = BaseModel()
+        self.storage.new(model)
+        self.storage.save()
+        with open(self.storage._FileStorage__file_path, 'r') as f:
+            self.assertIn(model.id, f.read())
+
+    def test_reload(self):
+        """Test reload method"""
+
+        model = BaseModel()
+        self.storage.new(model)
+        self.storage.save()
+        self.storage.reload()
+        key = "{}.{}".format(model.__class__.__name__, model.id)
+        self.assertIn(key, self.storage.all())
 
 if __name__ == '__main__':
     unittest.main()
