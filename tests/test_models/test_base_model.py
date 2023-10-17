@@ -25,7 +25,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(objects.__class__.__name__, str)
         self.assertEqual(objects.__class__.__name__, 'BaseModel')
         self.assertIsInstance(objects.my_number, int)
-        pr = f"[{objects.__class__.__name__}] ({objects.id}) {objects.__dict__}"
+        pr = f"[{objects.__class__.__name__}]
+        ({objects.id}) {objects.__dict__}"
         self.assertEqual(str(objects), pr)
 
         obj_json = objects.to_dict()
