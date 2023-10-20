@@ -7,3 +7,8 @@ footer {
     bottom: 0;
     text-align: center;
 }
+
+footer p {
+    margin: 0;
+    padding-top: 20px;
+}
