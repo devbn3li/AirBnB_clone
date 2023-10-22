@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-.places > h1 {
+.places>h1 {
     width: 100%;
     font-size: 30px;
 }
@@ -17,7 +17,7 @@ article {
     padding: 20px;
 }
 
-article > h2 {
+article>h2 {
     font-size: 30px;
     text-align: center;
     margin: 0;
