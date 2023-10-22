@@ -37,6 +37,7 @@ button:hover {
     width: 50%;
     margin-left: 60px;
     line-height: 0;
+    cursor: pointer;
 }
 
 .locations {
