@@ -33,7 +33,7 @@ button:hover {
 
 .locations, .amenities {
     height: 100%;
-    width: 25%;
+    width: 50%;
     margin-left: 60px;
     line-height: 0;
 }
@@ -51,4 +51,30 @@ button:hover {
 .locations h4 , .amenities h4 {
     font-weight: 400;
     font-size: 14px;
+}
+
+.popover {
+    width: 100%;
+    background-color: #FAFAFA;
+    border: 1px #DDDDDD solid;
+    list-style: none;
+    display: none;
+    padding: 30px;
+    margin-left: -61px;
+    border-radius: 4px;
+    position: relative;
+    margin-top: 26px;
+}
+
+.state {
+    margin-bottom: 40px;
+}
+
+.cities {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.amenities:hover .popover, .locations:hover .popover {
+    display: block;
 }

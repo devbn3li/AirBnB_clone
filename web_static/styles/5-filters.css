@@ -33,7 +33,7 @@ button:hover {
 
 .locations, .amenities {
     height: 100%;
-    width: 25%;
+    width: 50%;
     margin-left: 60px;
     line-height: 0;
 }
