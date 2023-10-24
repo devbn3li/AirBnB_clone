@@ -1,4 +1,20 @@
 @media (max-width: 767px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    header i {
+        color: #ff6a6f;
+        font-size: 37px;
+        margin: 18px 15px;
+    }
+
+    header i:hover {
+        cursor: pointer;
+
+    }
+
     .places>h1 {
         text-align: center;
     }
